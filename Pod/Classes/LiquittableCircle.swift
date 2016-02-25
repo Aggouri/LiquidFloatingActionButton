@@ -18,7 +18,7 @@ public class LiquittableCircle : UIView {
             setup()
         }
     }
-    var color: UIColor = UIColor.redColor() {
+    public var color: UIColor = UIColor.redColor() {
         didSet {
             setup()
         }
