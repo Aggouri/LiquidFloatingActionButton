@@ -370,12 +370,16 @@ class CircleLiquidBaseView : ActionBarBaseView {
         }
 
         if let firstCell = openingCells.first {
+            bigEngine?.color = firstCell.color
             bigEngine?.push(baseLiquid!, other: firstCell)
+            bigEngine?.color = self.color
         }
         for i in 1..<openingCells.count {
             let prev = openingCells[i - 1]
             let cell = openingCells[i]
+            engine?.color = cell.color
             engine?.push(prev, other: cell)
+            engine?.color = self.color
         }
         engine?.draw(baseLiquid!)
         bigEngine?.draw(baseLiquid!)
