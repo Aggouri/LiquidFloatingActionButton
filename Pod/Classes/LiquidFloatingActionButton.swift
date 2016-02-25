@@ -90,7 +90,6 @@ public class LiquidFloatingActionButton : UIView {
     }
 
     private func insertCell(cell: LiquidFloatingCell) {
-        cell.color  = self.color
         cell.radius = self.frame.width * cellRadiusRatio
         cell.center = self.center.minus(self.frame.origin)
         cell.actionButton = self
