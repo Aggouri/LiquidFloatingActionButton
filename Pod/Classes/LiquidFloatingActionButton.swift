@@ -70,6 +70,28 @@ public class LiquidFloatingActionButton : UIView {
     }
     
     @IBInspectable public var rotationDegrees: CGFloat = 45.0
+    
+    @IBInspectable public var rotationOpenAnimationDuration: Double = 0.8
+    
+    @IBInspectable public var rotationCloseAnimationDuration: Double = 0.8
+    
+    @IBInspectable public var openAnimationDuration: CGFloat = 0.6 {
+        didSet {
+            baseView.openDuration = openAnimationDuration
+        }
+    }
+    
+    @IBInspectable public var closeAnimationDuration: CGFloat = 0.2 {
+        didSet {
+            baseView.closeDuration = closeAnimationDuration
+        }
+    }
+    
+    @IBInspectable public var viscosity: CGFloat = 0.65 {
+        didSet {
+            baseView.viscosity = viscosity
+        }
+    }
 
     private var plusLayer   = CAShapeLayer()
     private let circleLayer = CAShapeLayer()
@@ -110,7 +132,7 @@ public class LiquidFloatingActionButton : UIView {
     public func open() {
         
         // rotate plus icon
-        CATransaction.setAnimationDuration(0.8)
+        CATransaction.setAnimationDuration(rotationOpenAnimationDuration)
         self.plusLayer.transform = CATransform3DMakeRotation((CGFloat(M_PI) * rotationDegrees) / 180, 0, 0, 1)
 
         let cells = cellArray()
@@ -127,7 +149,7 @@ public class LiquidFloatingActionButton : UIView {
     public func close() {
         
         // rotate plus icon
-        CATransaction.setAnimationDuration(0.8)
+        CATransaction.setAnimationDuration(rotationCloseAnimationDuration)
         self.plusLayer.transform = CATransform3DMakeRotation(0, 0, 0, 1)
     
         self.baseView.close(cellArray())
@@ -267,9 +289,14 @@ class ActionBarBaseView : UIView {
 
 class CircleLiquidBaseView : ActionBarBaseView {
 
-    let openDuration: CGFloat  = 0.6
-    let closeDuration: CGFloat = 0.2
-    let viscosity: CGFloat     = 0.65
+    var openDuration: CGFloat  = 0.6
+    var closeDuration: CGFloat = 0.2
+    var viscosity: CGFloat     = 0.65 {
+        didSet {
+            engine?.viscosity = viscosity
+            bigEngine?.viscosity = viscosity
+        }
+    }
     var animateStyle: LiquidFloatingActionButtonAnimateStyle = .Up
     var color: UIColor = UIColor(red: 82 / 255.0, green: 112 / 255.0, blue: 235 / 255.0, alpha: 1.0) {
         didSet {

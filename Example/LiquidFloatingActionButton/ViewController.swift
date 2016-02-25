@@ -82,6 +82,11 @@ class ViewController: UIViewController, LiquidFloatingActionButtonDataSource, Li
             floatingActionButton.animateStyle = style
             floatingActionButton.dataSource = self
             floatingActionButton.delegate = self
+            floatingActionButton.rotationOpenAnimationDuration = 0.5
+            floatingActionButton.openAnimationDuration = 0.4
+            floatingActionButton.closeAnimationDuration = 0.2
+            floatingActionButton.rotationCloseAnimationDuration = 0.3
+            floatingActionButton.viscosity = 0.3
             return floatingActionButton
         }
         
