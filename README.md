@@ -14,8 +14,10 @@ This is also [spinner loader](https://github.com/yoavlt/LiquidLoader) components
 
 ## Features
 - [x] liquid animation
-- [x] easily custoizable
+- [x] easily customisable
 - [x] Objective-C compatible
+- [x] Swift2.0
+- [x] Improvements branch contains additional features from the original repo (see below)
 
 You can play a demo with [appetize.io](https://appetize.io/app/f4t42hgqbnbma4m12jcg3aeebg?device=iphone5s&scale=75&orientation=portrait)
 
@@ -35,6 +37,13 @@ floatingActionButton.delegate = self
 
 ### LiquidFloatingActionButtonDelegate
 * optional func liquidFloatingActionButton(liquidFloatingActionButton: LiquidFloatingActionButton, didSelectItemAtIndex index: Int)
+
+## Improvements Branch
+The `improvements` branch contains the following items over the `swift-2.0` branch of the original repo.
+* The liquid color that bleeds out of a floating cell is that of the newly appearing cell and is thus different per cell pair. The original repo sets the color to that of the floating action button.
+* Ability to customise individual floating cell colors
+* Ability to customise animation durations
+* Ability to customise the viscosity value
 
 ## Easily customizable
 ![Demo](https://github.com/yoavlt/LiquidFloatingActionButton/blob/master/Demo/customizable.gif?raw=true)
